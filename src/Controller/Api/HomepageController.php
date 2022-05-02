@@ -18,4 +18,14 @@ class HomepageController extends BaseController
     {
         return $this->handleView($this->view("Hello", Response::HTTP_OK));
     }
+
+    /**
+     * @Rest\Get("/categories")
+     * @return Response
+     */
+    public function getCategoriesAction(): Response
+    {
+        $categories = $this->categoryRepository->findAll();
+        return $this->handleView($this->view($categories, Response::HTTP_OK));
+    }
 }
